@@ -7,7 +7,6 @@ namespace blog\CircuitBreaker\DependencyInjection\CompilerPass;
 use Ackintosh\Ganesha;
 use Ackintosh\Ganesha\Builder as GaneshaStrategyBuilder;
 use Ackintosh\Ganesha\Storage\Adapter\Redis as GaneshaRedisAdapter;
-use Ackintosh\Ganesha\Storage\StorageKeysInterface;
 use Ackintosh\Ganesha\Strategy\Count\Builder as GaneshaCountStrategyBuilder;
 use Ackintosh\Ganesha\Strategy\Rate\Builder as GaneshaRateStrategyBuilder;
 use blog\CircuitBreaker\WithCircuitBreaker;
@@ -77,7 +76,7 @@ final readonly class CircuitBreakerCompilerPass implements CompilerPassInterface
                 $this->processArgument($classDefinition, $argumentReference, $argument->getName(), $attribute);
 
                 if ($k > 0) {
-                    throw new AutowiringFailedException('WithCirtcuitBreaker attribute cannot set more than once on a autowired argument.');
+                    throw new AutowiringFailedException('WithCircuitBreaker attribute cannot set more than once on a autowired argument.');
                 }
             }
         }
